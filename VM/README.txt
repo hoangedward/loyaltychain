@@ -1,0 +1,95 @@
+Vagrant:
+https://www.vagrantup.com/
+
+Start VM with vagrant
+> vagrant up
+
+Login to VM
+> vagrant ssh
+
+Logout of VM
+$ logout
+
+Gracefully shutdown the VM (not remove)
+> vagrant half
+
+========================================================
+Install Docker
+https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+$ sudo apt-get remove docker docker-engine docker.io
+
+$ sudo apt-get update
+
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+$ sudo apt-key fingerprint 0EBFCD88
+
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+$ sudo apt-get update
+
+$ sudo apt-get install docker-ce
+
+$ sudo docker run hello-world
+
+========================================================
+Install Docker Compose
+https://docs.docker.com/compose/install/
+
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+$ sudo chmod +x /usr/local/bin/docker-compose
+
+$ docker-compose --version
+
+========================================================
+Install Docker machine
+https://docs.docker.com/machine/install-machine/
+
+base=https://github.com/docker/machine/releases/download/v0.14.0 &&
+  curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+  sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+  
+docker-machine version
+  
+========================================================
+Setup docker-machine
+
+
+
+========================================================
+BigchainDB
+sudo docker pull bigchaindb/bigchaindb:all-in-one
+
+sudo docker run \
+  --detach \
+  --name bigchaindb \
+  --publish 9984:9984 \
+  --publish 9985:9985 \
+  --publish 27017:27017 \
+  --publish 26657:26657 \
+  --volume $HOME/bigchaindb_docker/mongodb/data/db:/data/db \
+  --volume $HOME/bigchaindb_docker/mongodb/data/configdb:/data/configdb \
+  --volume $HOME/bigchaindb_docker/tendermint:/tendermint \
+  bigchaindb/bigchaindb:all-in-one
+  
+
+  
+sudo docker start bigchaindb
+
+Test
+http://localhost:9984/
+
+
+
+
+
