@@ -1,0 +1,87 @@
+Service Description
+
+Naming Server (Netflix Eureka)
+	Name:
+		naming-server
+	Port:
+		http://localhost:8761
+	Description:
+		Act as a naming server to managed all running service instances
+	API:
+		NOPE
+
+API Gateway (Netflix Zuul)
+	Name:
+		api-gateway
+	Port:
+		http://localhost:8765
+	Description:
+		Act as a gatekeeper service to handle authentication, authorization, security, fault tolerrance and service aggregation
+	API:
+		/account-service/register
+	
+BigchainDB Proxy
+	Name:
+		bigchaindb-proxy
+	Port:
+		http://localhost:8777
+	Description:
+		Act as a gateway service to handle requests (CREATE, TRANSFER) to BigchainDB network and QUERY from Embedded MongoDB
+	API:
+		
+	
+Reward Service
+	Name:
+		reaward-service
+	Port:
+		http://localhost:8100
+	Description:
+		Act as a gateway service to handle requests (CREATE, TRANSFER) to BigchainDB network and QUERY from Embedded MongoDB
+	API:
+		POST /voucher/issue
+			Params:
+				Quantity
+				
+Voucher Service
+	Name:
+		voucher-service
+	Port:
+		http://localhost:8200
+	Description:
+		Act as a gateway service to handle requests (CREATE, TRANSFER) to BigchainDB network and QUERY from Embedded MongoDB
+	API:
+	
+Account Service
+	Name:
+		account-service
+	Port:
+		http://localhost:8000
+	Description:
+		Act as a gateway service to handle requests (CREATE, TRANSFER) to BigchainDB network and QUERY from Embedded MongoDB
+	API:
+		- POST /user/register
+			Params:
+				name
+				BOD
+				address
+				id
+				mobile number
+				passcode
+			Response:
+				0: success
+				1: mobile number is already regiestered
+			Logic:
+				Check for unique mobile number
+				Using KeyPairGenerator to generate a new public/private key pair
+				Encrypt private key by passcode
+				Persist user information and (public + encrypted private key) to DB
+		- POST /user/login
+			Params:
+				mobile number
+				passcode
+			
+				
+		
+		
+		
+		
