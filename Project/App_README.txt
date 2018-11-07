@@ -9,6 +9,8 @@ Voucher Service							8200
 Netflix Eureka Naming Server			8761
 Netflix Zuul API Gateway Server			8765
 Zipkin Distributed Tracing Server		9411
+Loyaltychain All-In-One					8080
+H2 DB Console							8080/h2-console
 
 
 Limits Service							8080, 8081, ...
