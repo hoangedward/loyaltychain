@@ -44,7 +44,7 @@ public class HelloWorldController {
                 .addToken("app_id", "") 
                 .addToken("app_key", "").setup();
 
-        //set metadata
+        //set metaData
         MetaData metaData = new MetaData();
         metaData.setId("51ce82a14ca274d43e4992bbce41f6fdeb755f846e48e710a3bbb3b0cf8e4204");
         metaData.setMetaData("msg", "Testing Android");

@@ -1,13 +1,21 @@
 package com.gcs.bc.loyaltychain.loyaltychainsingle.reward.voucher;
 
-public class Voucher {
+import java.util.Map;
 
-	public void issue() {
+import com.gcs.bc.loyaltychain.loyaltychainsingle.reward.Reward;
+
+public class Voucher extends Reward {
+	
+	public Voucher() {
 		
 	}
 	
-	public void transfer() {
-		
+	public Voucher(String id) {
+		super(id);
 	}
-	
+
+	public Voucher(Map<String, String> info) {
+		super(info);
+	}
+
 }

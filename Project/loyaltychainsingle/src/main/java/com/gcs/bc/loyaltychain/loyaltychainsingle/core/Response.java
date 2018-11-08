@@ -1,11 +1,11 @@
 package com.gcs.bc.loyaltychain.loyaltychainsingle.core;
 
-public class Response {
+public abstract class Response {
 	
 	public static final int RET_FAILED = -1;
 	public static final int RET_SUCCEED = 0;
 	
-	protected int retCode;
+	protected int retCode = RET_FAILED;
 	protected String detailMessage;
 	
 	public Response(int retCode) {
@@ -22,5 +22,13 @@ public class Response {
 
 	public String getDetailMessage() {
 		return detailMessage;
+	}
+	
+	public boolean isSucceed() {
+		return retCode == RET_SUCCEED;
+	}
+	
+	public boolean isFailed() {
+		return retCode != RET_SUCCEED;
 	}
 }
