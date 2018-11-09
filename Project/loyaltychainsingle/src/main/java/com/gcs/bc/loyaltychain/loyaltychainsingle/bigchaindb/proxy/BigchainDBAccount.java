@@ -18,4 +18,9 @@ public class BigchainDBAccount {
 		return privateKey;
 	}
 
+	@Override
+	public String toString() {
+		return "BigchainDBAccount [publicKey=" + publicKey + ", privateKey=" + privateKey + "]";
+	}
+
 }

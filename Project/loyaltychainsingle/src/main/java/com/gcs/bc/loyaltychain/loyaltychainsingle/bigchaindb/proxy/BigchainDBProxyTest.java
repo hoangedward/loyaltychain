@@ -6,8 +6,8 @@ import java.util.Map;
 public class BigchainDBProxyTest {
 
 	public static void main(String[] args) {
-		BigchainDBProxy bigchainDBProxy = new BigchainDBProxy();
-		bigchainDBProxy.setConfig(new BigchainDBConfig());
+		BigchainDBProxy bigchainDBProxy = new BigchainDBProxy(new BigchainDBConfig());
+		//bigchainDBProxy.setConfig(new BigchainDBConfig());
 		
 		final String publicKey = "302a300506032b657003210033c43dc2180936a2a9138a05f06c892d2fb1cfda4562cbc35373bf13cd8ed373";
 	    final String privateKey = "302e020100300506032b6570042204206f6b0cd095f1e83fc5f08bffb79c7c8a30e77a3ab65f4bc659026b76394fcea8";

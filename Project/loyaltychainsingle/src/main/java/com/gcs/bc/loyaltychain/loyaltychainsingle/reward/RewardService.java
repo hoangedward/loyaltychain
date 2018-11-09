@@ -9,8 +9,8 @@ import com.gcs.bc.loyaltychain.loyaltychainsingle.bigchaindb.proxy.BigchainDBCon
 import com.gcs.bc.loyaltychain.loyaltychainsingle.bigchaindb.proxy.BigchainDBProxy;
 import com.gcs.bc.loyaltychain.loyaltychainsingle.bigchaindb.proxy.BigchainDBResponse;
 import com.gcs.bc.loyaltychain.loyaltychainsingle.bigchaindb.proxy.BigchainDBTransaction;
+import com.gcs.bc.loyaltychain.loyaltychainsingle.core.Asset.MetaData;
 import com.gcs.bc.loyaltychain.loyaltychainsingle.gateway.Account;
-import com.gcs.bc.loyaltychain.loyaltychainsingle.reward.Reward.MetaData;
 
 public class RewardService {
 
@@ -30,16 +30,19 @@ public class RewardService {
 			return retIdList;
 		}
 
-		BigchainDBProxy bigchainDBProxy = new BigchainDBProxy();
-		bigchainDBProxy.setConfig(new BigchainDBConfig());
+		BigchainDBProxy bigchainDBProxy = new BigchainDBProxy(new BigchainDBConfig());
+		//bigchainDBProxy.setConfig(new BigchainDBConfig());
 
 		BigchainDBAccount bigchainDBAccount = new BigchainDBAccount(account.getPublicKey(), account.getPrivateKey());
 
 		for (int i = 0; i < quantity; i++) {
+			
+			Reward newReward = (Reward)reward.clone();
+			
 			BigchainDBTransaction transaction = new BigchainDBTransaction();
-			transaction.setAssetData(reward.getInfo());
+			transaction.setAssetData(newReward.getInfo());
 
-			MetaData metaData = reward.getMetaData();
+			MetaData metaData = newReward.getMetaData();
 			if (metaData != null) {
 				transaction.setMetaData(metaData.getId(), metaData.getMetaData());
 			}
@@ -57,8 +60,8 @@ public class RewardService {
 		
 		List<String> retIdList = new ArrayList<>();
 		
-		BigchainDBProxy bigchainDBProxy = new BigchainDBProxy();
-		bigchainDBProxy.setConfig(new BigchainDBConfig());
+		BigchainDBProxy bigchainDBProxy = new BigchainDBProxy(new BigchainDBConfig());
+		//bigchainDBProxy.setConfig(new BigchainDBConfig());
 
 		BigchainDBAccount fromBigchainDBAccount = new BigchainDBAccount(fromAccount.getPublicKey(), fromAccount.getPrivateKey());
 		BigchainDBAccount toBigchainDBAccount = new BigchainDBAccount(toAccount.getPublicKey(), toAccount.getPrivateKey());

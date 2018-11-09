@@ -24,6 +24,13 @@ import net.i2p.crypto.eddsa.EdDSAPublicKey;
 
 @Component
 public class BigchainDBProxy {
+	
+	public BigchainDBProxy(BigchainDBConfig config) {
+		this.config = config;
+		// configure local connection to bigchaindb network
+		BigchainDbConfigBuilder.baseUrl(this.config.getAPIURL()).addToken("app_id", this.config.getAppId())
+				.addToken("app_key", this.config.getAppKey()).setup();
+	}
 
 	@Autowired
 	private BigchainDBConfig config;
@@ -38,10 +45,6 @@ public class BigchainDBProxy {
 		// assetData.put("msg", "Test");
 
 		Map<String, String> assetData = transaction.getAssetData();
-
-		// configure local connection to bigchaindb network
-		BigchainDbConfigBuilder.baseUrl(config.getAPIURL()).addToken("app_id", config.getAppId())
-				.addToken("app_key", config.getAppKey()).setup();
 
 		// set metaData
 		// MetaData metaData = new MetaData();

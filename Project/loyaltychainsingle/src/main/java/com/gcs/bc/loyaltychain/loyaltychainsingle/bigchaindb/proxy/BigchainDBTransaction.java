@@ -29,4 +29,9 @@ public class BigchainDBTransaction {
 		data.forEach((k, v) -> metaData.setMetaData(k, v));
 	}
 
+	@Override
+	public String toString() {
+		return "BigchainDBTransaction [metaData=" + metaData + ", assetData=" + assetData + "]";
+	}
+	
 }

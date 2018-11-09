@@ -2,7 +2,7 @@ package com.gcs.bc.loyaltychain.loyaltychainsingle.reward;
 
 import java.util.Map;
 
-import com.gcs.bc.loyaltychain.loyaltychainsingle.reward.Reward.MetaData;
+import com.gcs.bc.loyaltychain.loyaltychainsingle.core.Asset.MetaData;
 import com.gcs.bc.loyaltychain.loyaltychainsingle.reward.Reward.RewardType;
 import com.gcs.bc.loyaltychain.loyaltychainsingle.reward.voucher.Voucher;
 

@@ -18,4 +18,9 @@ public class Account {
 		return privateKey;
 	}
 
+	@Override
+	public String toString() {
+		return "Account [publicKey=" + publicKey + ", privateKey=" + privateKey + "]";
+	}
+
 }

@@ -11,7 +11,8 @@ Logout of VM
 $ logout
 
 Gracefully shutdown the VM (not remove)
-> vagrant half
+> vagrant halt
+(---- not half )
 
 ========================================================
 Install Docker
@@ -39,7 +40,7 @@ $ sudo apt-get update
 
 $ sudo apt-get install docker-ce
 
-$ sudo docker run hello-world
+$ docker version
 
 ========================================================
 Install Docker Compose
@@ -51,6 +52,11 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 
 $ docker-compose --version
 
+
+========================================================
+Install Virtualbox
+https://websiteforstudents.com/virtualbox-5-2-on-ubuntu-16-04-lts-server-headless/
+
 ========================================================
 Install Docker machine
 https://docs.docker.com/machine/install-machine/
@@ -60,17 +66,25 @@ base=https://github.com/docker/machine/releases/download/v0.14.0 &&
   sudo install /tmp/docker-machine /usr/local/bin/docker-machine
   
 docker-machine version
-  
+
 ========================================================
-Setup docker-machine
+create a Linux VM where we can run our containers
+$ docker-machine create --driver virtualbox containerhost
 
+$ eval "$(docker-machine env containerhost)"
 
+Test
+$ sudo docker run hello-world
+
+========================================================
+docker swarm
+No need for now
 
 ========================================================
 BigchainDB
-sudo docker pull bigchaindb/bigchaindb:all-in-one
+$ sudo docker pull bigchaindb/bigchaindb:all-in-one
 
-sudo docker run \
+$ sudo docker run \
   --detach \
   --name bigchaindb \
   --publish 9984:9984 \
@@ -82,12 +96,27 @@ sudo docker run \
   --volume $HOME/bigchaindb_docker/tendermint:/tendermint \
   bigchaindb/bigchaindb:all-in-one
   
-
+9984 BigchainDB API server
+9985 BigchainDB Websocket server
+27017 Default port for MongoDB
+26657 Tendermint RPC server
   
-sudo docker start bigchaindb
+
+For later time
+$ sudo docker start bigchaindb
 
 Test
 http://localhost:9984/
+
+$ curl -L http://localhost:9984/
+
+
+========================================================
+Stop and remove the current local container host
+$ docker-machine stop containerhost 
+exit status 1 
+$ docker-machine rm containerhost 
+Successfully removed containerhost
 
 
 

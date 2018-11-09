@@ -17,5 +17,5 @@ public class Voucher extends Reward {
 	public Voucher(Map<String, String> info) {
 		super(info);
 	}
-
+	
 }
