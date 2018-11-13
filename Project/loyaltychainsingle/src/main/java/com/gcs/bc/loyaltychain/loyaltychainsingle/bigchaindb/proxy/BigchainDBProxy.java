@@ -1,12 +1,9 @@
 package com.gcs.bc.loyaltychain.loyaltychainsingle.bigchaindb.proxy;
 
-import java.io.IOException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.Map;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
 import com.bigchaindb.builders.BigchainDbTransactionBuilder;
@@ -22,7 +19,7 @@ import com.bigchaindb.model.Transaction;
 import net.i2p.crypto.eddsa.EdDSAPrivateKey;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 
-@Component
+// @Component
 public class BigchainDBProxy {
 	
 	public BigchainDBProxy(BigchainDBConfig config) {
@@ -114,7 +111,7 @@ public class BigchainDBProxy {
 			
 			return BigchainDBResponse.succeed(transferTransaction.getId());
 			
-		} catch (IOException | InvalidKeySpecException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

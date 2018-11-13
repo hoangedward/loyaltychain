@@ -1,9 +1,9 @@
 package com.gcs.bc.loyaltychain.loyaltychainsingle.bigchaindb.proxy;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import com.bigchaindb.model.MetaData;
+import com.google.gson.internal.LinkedTreeMap;
 
 public class BigchainDBTransaction {
 
@@ -19,7 +19,7 @@ public class BigchainDBTransaction {
 	}
 
 	public void setAssetData(Map<String, String> data) {
-		assetData = new HashMap<>();
+		assetData = new LinkedTreeMap<>();
 		data.forEach((k, v) -> assetData.put(k, v));
 	}
 

@@ -1,7 +1,8 @@
 package com.gcs.bc.loyaltychain.loyaltychainsingle.bigchaindb.proxy;
 
-import java.util.HashMap;
 import java.util.Map;
+
+import com.google.gson.internal.LinkedTreeMap;
 
 public class BigchainDBProxyTest {
 
@@ -14,14 +15,14 @@ public class BigchainDBProxyTest {
 		BigchainDBAccount account = new BigchainDBAccount(publicKey, privateKey);
 		
 		BigchainDBTransaction transaction = new BigchainDBTransaction();
-		Map<String, String> assetData = new HashMap<>();
+		Map<String, String> assetData = new LinkedTreeMap<>();
 		assetData.put("Name", "Alice");
 		assetData.put("Age", "28");
 		assetData.put("Company", "GCS");
 		transaction.setAssetData(assetData);
 		
 		String metaDataId = "Meta11111111111111111111111111";
-		Map<String, String> medaData = new HashMap<>();
+		Map<String, String> medaData = new LinkedTreeMap<>();
 		medaData.put("Key1", "Value1");
 		medaData.put("Key2", "Value2");
 		transaction.setMetaData(metaDataId, medaData);

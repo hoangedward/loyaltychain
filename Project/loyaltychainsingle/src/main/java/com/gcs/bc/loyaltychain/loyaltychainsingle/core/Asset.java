@@ -1,8 +1,9 @@
 package com.gcs.bc.loyaltychain.loyaltychainsingle.core;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
+
+import com.google.gson.internal.LinkedTreeMap;
 
 public abstract class Asset implements Cloneable, Serializable {
 	
@@ -10,7 +11,7 @@ public abstract class Asset implements Cloneable, Serializable {
 
 	protected String id;
 	
-	protected Map<String, String> info = new HashMap<>();
+	protected Map<String, String> info = new LinkedTreeMap<>();
 	
 	protected MetaData metaData;
 	
@@ -36,7 +37,7 @@ public abstract class Asset implements Cloneable, Serializable {
 
 	public void addInfo(String key, String value) {
 		if(info == null) {
-			info = new HashMap<>();
+			info = new LinkedTreeMap<>();
 		}
 		info.put(key, value);
 	}
@@ -53,7 +54,7 @@ public abstract class Asset implements Cloneable, Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		private String id;
-		private Map<String, String> metaData = new HashMap<>();
+		private Map<String, String> metaData = new LinkedTreeMap<>();
 		public MetaData(String metaDataId, Map<String, String> metaData) {
 			this.id = metaDataId;
 			this.metaData = metaData;

@@ -1,6 +1,5 @@
 package com.gcs.bc.loyaltychain.loyaltychainsingle.gateway;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +9,7 @@ import com.bigchaindb.constants.Operations;
 import com.bigchaindb.model.Assets;
 import com.bigchaindb.model.Transaction;
 import com.bigchaindb.model.Transactions;
+import com.google.gson.internal.LinkedTreeMap;
 
 public class ApplicationGatewayTest {
 
@@ -21,13 +21,13 @@ public class ApplicationGatewayTest {
 		
 		Account sellerAccount = applicationGateway.createSellerAccount();
 		
-		Map<String, String> info =  new HashMap<>();
+		Map<String, String> info =  new LinkedTreeMap<>();
 		info.put("Name", "Alice");
 		info.put("Age", "28");
 		info.put("Company", "GCS");
 		
 		String metaDataId = "Meta1111111111111";
-		Map<String, String> metaData = new HashMap<>();
+		Map<String, String> metaData = new LinkedTreeMap<>();
 		metaData.put("Key1", "Value1");
 		metaData.put("Key2", "Value2");
 		List<String> issuedRewardId = applicationGateway.issueReward(sellerAccount, info, metaDataId, metaData, 3);
@@ -38,7 +38,7 @@ public class ApplicationGatewayTest {
 			Account buyerAccount = applicationGateway.createBuyerAccount();
 			
 			String newMetaDataId = "Meta222222222222222";
-			Map<String, String> newMetaData = new HashMap<>();
+			Map<String, String> newMetaData = new LinkedTreeMap<>();
 			newMetaData.put("Key3", "Value3");
 			newMetaData.put("Key4", "Value4");
 			
